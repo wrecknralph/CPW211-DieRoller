@@ -20,12 +20,15 @@
         /// to the new number. Returns the new number
         /// </summary>
         /// <returns>Returns the new random number</returns>
-        public void Roll()
+        public byte Roll()
         {
             // Generate random number
-            // Set to face value
-            // Return new number
-            throw new NotImplementedException();
+            Random random = new Random();
+            byte newValue = (byte)random.Next(1, 7);
+
+            FaceValue = newValue;
+            
+            return FaceValue;
         }  
     }
 }
