@@ -6,9 +6,18 @@
     public class Die
     {
         /// <summary>
+        /// Creates the die and rolls it to start with
+        /// a random number
+        /// </summary>
+        public Die()
+        {
+            Roll();
+        }
+
+        /// <summary>
         /// The current face up value of the die
         /// </summary>
-        public byte FaceValue { get; set; }   
+        public byte FaceValue { get; private set; }   
 
         /// <summary>
         /// True if the die is currently held
@@ -17,15 +26,21 @@
 
         /// <summary>
         /// Rolls the die and sets the <see cref="FaceValue"/>
-        /// to the new number. Returns the new number
+        /// to the new number if the die is not currently held.
+        /// Returns the <see cref="FaceValue"/>
         /// </summary>
-        /// <returns>Returns the new random number</returns>
-        public void Roll()
+        /// <returns>Returns the new random number /></returns>
+        public byte Roll()
         {
-            // Generate random number
-            // Set to face value
-            // Return new number
-            throw new NotImplementedException();
+            if (!IsHeld) 
+            { 
+                // Generate random number
+                Random random = new();
+                byte newValue = (byte)random.Next(1, 7);
+
+                FaceValue = newValue;
+            }
+            return FaceValue;
         }  
     }
 }
